@@ -10,20 +10,20 @@ class Post extends Model
 {
     use HasFactory;
     public function category(){
-        return $this ->belongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
     public function user(){
-        return $this ->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function tags(){
-        return $this ->belongsTo(Tag::class);
+        return $this->BelongsToMany(Tag::class);
     }
 
 
 
     public Function image(){
-        return $this ->morphOne(Image::class,'imageable');
+        return $this->morphOne(Image::class,'imageable');
     }
 
 

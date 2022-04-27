@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class ImagetoryFactory extends Factory
+class ImageFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class ImagetoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'url'=>'posts/'.$this->faker->image('public/storage/posts',640,480,null,false)
         ];
     }
 }
