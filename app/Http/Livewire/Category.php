@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Category as ModelsCategory;
 use Livewire\Component;
+use PhpParser\Builder\Function_;
 use PhpParser\Node\Expr\FuncCall;
 
 class Category extends Component
@@ -47,8 +48,22 @@ class Category extends Component
             ]
 
         );
-        session()->flash('message','Registro Creado');
+        session()->flash('message',
+            $this ->category_id ?'registro actualizado satisfatoriaente':'registro creado satisfatoriamente');
         $this->closeModal();
         $this->resetInputFields();
+    }
+
+    public function edit(ModelsCategory $category){
+        $this->category_id=$category->id;
+        $this->name=$category->name;
+        $this->slug=$category->slug;
+        $this->openModal();
+
+    }
+
+    public function delete(ModelsCategory $category){
+        $category->delete();
+        session()->flash('message','registro borrado satisfactoriamente');
     }
 }
